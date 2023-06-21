@@ -1,0 +1,21 @@
+& when (@media-common = true) {
+    body {
+        overflow-x: hidden;
+    }
+
+    .box-tocart {
+        .actions {
+            .tocart {
+                width: 240px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: @screen__m) {
+    .actions {
+        .tocart {
+            width: 100%
+        }
+    }
+}
