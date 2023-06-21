@@ -32,11 +32,15 @@ define(
                 _init: function () {
                     const self = this
                     if ($(this.options.element).length) {
-                        this.haltToCart()
+                        this.randomPosition()
+                        // Prevent tab navigation or smart customer keyboard navigation
+                        $(document).keydown(function() {
+                            return false
+                        })
                     }
                 },
 
-                haltToCart: function () {
+                randomPosition: function () {
                     const self = this
                     $(this.options.element).hover(
                         function () {
