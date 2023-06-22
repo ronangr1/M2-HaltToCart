@@ -8,7 +8,7 @@ define(
         'use strict';
 
         $.widget(
-            'halt.tocart',
+            'tocart.halt',
             {
                 default: {
                     bodyPosX: document.body.clientWidth,
@@ -34,7 +34,7 @@ define(
                     if ($(this.options.element).length) {
                         this.randomPosition()
                         // Prevent tab navigation or smart customer keyboard navigation
-                        $(document).keydown(function() {
+                        $(document).keydown(function () {
                             return false
                         })
                     }
@@ -59,6 +59,6 @@ define(
             }
         );
 
-        return $.halt.tocart;
+        return $.tocart.halt;
     }
 );

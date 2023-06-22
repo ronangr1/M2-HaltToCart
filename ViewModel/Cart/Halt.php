@@ -1,11 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace Ronangr1\HaltToCart\ViewModel\Catalog;
+namespace Ronangr1\HaltToCart\ViewModel\Cart;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\View\Element\Block\ArgumentInterface;
-
-class HaltToCart implements ArgumentInterface
+class Halt implements ArgumentInterface
 {
     private ScopeConfigInterface $config;
 
