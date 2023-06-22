@@ -30,9 +30,16 @@ define(
                 },
 
                 _init: function () {
-                    const self = this
-                    if ($(this.options.element).length) {
-                        this.randomPosition()
+                    const self = this,
+                        el = $(this.options.element)
+                    if (el.length) {
+                        el.hover(function () {
+                            self._randomPosition($(this))
+                        })
+                        // Prevent click events from any source
+                        el.click(function(e) {
+                            e.preventDefault()
+                        })
                         // Prevent tab navigation or smart customer keyboard navigation
                         $(document).keydown(function () {
                             return false
@@ -40,21 +47,16 @@ define(
                     }
                 },
 
-                randomPosition: function () {
-                    const self = this
-                    $(this.options.element).hover(
-                        function () {
-                            const options = {
-                                'position': 'absolute',
-                                'top': Math.floor((Math.random() * self.default.bodyPosY)),
-                                'left': Math.floor((Math.random() * self.default.bodyPosX)),
-                                'transition': '.15s ease-out',
-                                'z-index': '1000'
-                            }
-                            $(this).css(options)
-                            self.default.tries(self.default.tries() + 1)
-                        }
-                    )
+                _randomPosition: function (element) {
+                    const properties = {
+                        'position': 'absolute',
+                        'top': Math.floor((Math.random() * this.default.bodyPosY)),
+                        'left': Math.floor((Math.random() * this.default.bodyPosX)),
+                        'transition': '.15s ease-out',
+                        'z-index': '1000'
+                    }
+                    element.css(properties)
+                    this.default.tries(this.default.tries() + 1)
                 }
             }
         );
